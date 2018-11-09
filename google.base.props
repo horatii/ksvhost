@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- 配置包含googlebase库头文件 -->  
+  <PropertyGroup>
+    <IncludePath>$(CHROMIUM_BASE);$(IncludePath)</IncludePath>      
+  </PropertyGroup>
+  
+  <!-- 配置 googlebase 静态库目录 -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(CHROMIUM_BASE_BINARY)\debug_x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>$(CHROMIUM_BASE_BINARY)\debug_x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(CHROMIUM_BASE_BINARY)\release_x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>$(CHROMIUM_BASE_BINARY)\release_x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  
+  <!-- 配置程序运行支持库 -->
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>base.lib;base_paths.lib;base_static.lib;base_i18n.lib;icui18n.lib;icuuc.lib;boringssl.lib;chromium_sqlite3.lib;compression_utils.lib;crcrypto.lib;dynamic_annotations.lib;gmock.lib;gtest.lib;ipc.lib;libxml2.lib;minizip.lib;prefs.lib;sql.lib;zip.lib;Psapi.lib;ws2_32.lib;version.lib;protobuf_lite.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(ConfigurationType)'=='Application'">
+    <Link>
+      <MinimumRequiredVersion>5.01</MinimumRequiredVersion>
+      <DelayLoadDLLs>shell32.dll</DelayLoadDLLs>
+    </Link>
+  </ItemDefinitionGroup>
+  
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PreprocessorDefinitions>NO_TCMALLOC;USE_OPENSSL=1;OFFICIAL_BUILD;__STD_C;_CRT_RAND_S;_CRT_SECURE_NO_DEPRECATE;_HAS_EXCEPTIONS=0;_SCL_SECURE_NO_DEPRECATE;_ATL_NO_OPENGL;CERT_CHAIN_PARA_HAS_EXTRA_FIELDS;NTDDI_VERSION=0x0A000000;PSAPI_VERSION=1;_SECURE_ATL;_USING_V110_SDK71_;WIN32_LEAN_AND_MEAN;NOMINMAX;_UNICODE;UNICODE;_WIN32_WINNT=0x0A00;WINVER=0x0A00;_DEBUG;DYNAMIC_ANNOTATIONS_ENABLED=1;WTF_USE_DYNAMIC_ANNOTATIONS=1;BASE_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PreprocessorDefinitions>NO_TCMALLOC;USE_OPENSSL=1;OFFICIAL_BUILD;__STD_C;_CRT_RAND_S;_CRT_SECURE_NO_DEPRECATE;_HAS_EXCEPTIONS=0;_SCL_SECURE_NO_DEPRECATE;_ATL_NO_OPENGL;CERT_CHAIN_PARA_HAS_EXTRA_FIELDS;NTDDI_VERSION=0x0A000000;PSAPI_VERSION=1;_SECURE_ATL;_USING_V110_SDK71_;WIN32_LEAN_AND_MEAN;NOMINMAX;_UNICODE;UNICODE;_WIN32_WINNT=0x0A00;WINVER=0x0A00;_DEBUG;DYNAMIC_ANNOTATIONS_ENABLED=1;WTF_USE_DYNAMIC_ANNOTATIONS=1;BASE_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>    
+  </ItemDefinitionGroup>
+  
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>NO_TCMALLOC;USE_OPENSSL=1;OFFICIAL_BUILD;__STD_C;_CRT_RAND_S;_CRT_SECURE_NO_DEPRECATE;_HAS_EXCEPTIONS=0;_SCL_SECURE_NO_DEPRECATE;_ATL_NO_OPENGL;CERT_CHAIN_PARA_HAS_EXTRA_FIELDS;NTDDI_VERSION=0x0A000000;PSAPI_VERSION=1;_SECURE_ATL;_USING_V110_SDK71_;WIN32_LEAN_AND_MEAN;NOMINMAX;_UNICODE;UNICODE;_WIN32_WINNT=0x0A00;WINVER=0x0A00;NDEBUG;NVALGRIND;DYNAMIC_ANNOTATIONS_ENABLED=0;BASE_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>    
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>NO_TCMALLOC;USE_OPENSSL=1;OFFICIAL_BUILD;__STD_C;_CRT_RAND_S;_CRT_SECURE_NO_DEPRECATE;_HAS_EXCEPTIONS=0;_SCL_SECURE_NO_DEPRECATE;_ATL_NO_OPENGL;CERT_CHAIN_PARA_HAS_EXTRA_FIELDS;NTDDI_VERSION=0x0A000000;PSAPI_VERSION=1;_SECURE_ATL;_USING_V110_SDK71_;WIN32_LEAN_AND_MEAN;NOMINMAX;_UNICODE;UNICODE;_WIN32_WINNT=0x0A00;WINVER=0x0A00;NDEBUG;NVALGRIND;DYNAMIC_ANNOTATIONS_ENABLED=0;BASE_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+</Project>
